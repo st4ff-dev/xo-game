@@ -14,27 +14,9 @@ class Game:
 
     def checkGame(self) -> int:
         ''' Проверка игры
-        0 - Нету ничего, можно ходить
-        1 - Блок, больше нету ходов
-        2 - Есть победа
-
-         x | o | x 
-        ---+---+---
-         o | x | o 
-        ---+---+---
-         o | o | x 
-
-        1  2  3  4  5
-        6  7  8  9  10
-        11 12 13 14 15
-        16 17 18 19 20
-        21 22 23 24 25
-
-        0  1  2  3  4
-        5  6  7  8  9
-        10 11 12 13 14
-        15 16 17 18 19
-        20 21 22 23 24
+        0 - Have nothing
+        1 - Block, we don't have any more moves available
+        2 - Win
         '''
         gameMap = self.map
         if 0 not in gameMap:
@@ -68,7 +50,7 @@ class Game:
     def showGameMap(self) -> None:
         gameMap = self.gameMapDecoder()
         print("\n".join([
-            "Игровое поле:",
+            "Game map:",
             "",
             f" {gameMap[0]} | {gameMap[1]} | {gameMap[2]} ",
             "---+---+---",
