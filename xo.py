@@ -13,7 +13,7 @@ class Game:
         ]
 
     def checkGame(self) -> int:
-        ''' Проверка игры
+        ''' Check game
         0 - Have nothing
         1 - Block, we don't have any more moves available
         2 - Win
