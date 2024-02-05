@@ -3,8 +3,8 @@ from xo import Game
 def main() -> None:
     '''Запускаем игру'''
     
-    # 1 - Нолик
-    # 2 - Крестик
+    # 1 - o
+    # 2 - x
 
     game_map = [
         0, 0, 0,
@@ -12,7 +12,7 @@ def main() -> None:
         0, 0, 0
     ]
     xo = Game()
-    state = 1
+    player = 1
 
     while True:
         try:
@@ -20,29 +20,26 @@ def main() -> None:
             if check == 1 or check == 2:
                 print("Игра окончена!")
                 break
-            elif state == 1:
-                userCommand = input("Введите ваш ход, пользователь 1 (q для выхода): ")
-                if userCommand == "q":
-                    break
-                else:
-                    xo.changeGameMap(int(userCommand), state)
-                    xo.showGameMap()
-                    state = 2
-            elif state == 2:
-                userCommand = input("Введите ваш ход, пользователь 2 (q для выхода): ")
-                if userCommand == "q":
-                    break
-                else:
-                    xo.changeGameMap(int(userCommand), state)
-                    xo.showGameMap()
-                    state = 1
+            userCommand = input(f"Write your move, player#{player} ('q' for end game): ")
+            if userCommand == "q":
+                break
+            else:
+                xo.changeGameMap(int(userCommand), player)
+                xo.showGameMap()
+                player = 1 if player == 2 else 2
         except KeyboardInterrupt or Exception:
             break
     
     print("\nИгра окончена!")
 
-def checkGame():
-    pass
+def pushGame(player: int, xo: Game) -> None:
+    userCommand = input(f"Write your move, player#{player} ('q' for end game): ")
+    if userCommand == "q":
+        return 0
+    else:
+        xo.changeGameMap(int(userCommand), player)
+        xo.showGameMap()
+        return 1
 
 if __name__ == '__main__':
     main()
