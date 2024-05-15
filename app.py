@@ -13,7 +13,8 @@ def main() -> None:
     ]
     xo = Game()
     player = 1
-
+    print("\033c")
+    xo.showGameMap()
     while True:
         try:
             check = xo.checkGame()
@@ -24,6 +25,7 @@ def main() -> None:
             if userCommand == "q":
                 break
             else:
+                print("\033c")
                 xo.changeGameMap(int(userCommand), player)
                 xo.showGameMap()
                 player = 1 if player == 2 else 2
@@ -31,15 +33,6 @@ def main() -> None:
             break
     
     print("\nИгра окончена!")
-
-def pushGame(player: int, xo: Game) -> None:
-    userCommand = input(f"Write your move, player#{player} ('q' for end game): ")
-    if userCommand == "q":
-        return 0
-    else:
-        xo.changeGameMap(int(userCommand), player)
-        xo.showGameMap()
-        return 1
 
 if __name__ == '__main__':
     main()
